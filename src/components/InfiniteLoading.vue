@@ -115,7 +115,9 @@ export default {
           if (!this.inThrottle) {
             this.inThrottle = true;
             setTimeout(() => {
-              this.attemptLoad();
+              if (!this.isLoading) {
+                this.attemptLoad();
+              }
               this.inThrottle = false;
             }, this.throttleLimit);
           }
